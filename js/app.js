@@ -8,6 +8,8 @@ var storeTable = document.getElementById('storeTable');
 // var pikeUI = document.getElementById('first-pike');
 // var pikeUI = document.getElementById('first-pike');
 
+ var allStores = [];
+
 var hourOfOperation = [
     '6am',
     '7am',
@@ -67,6 +69,7 @@ function CookieShop(minCust, maxCust, avgCookiesSold, shopName) {
         thEl.textContent = this.total;
         trEl.appendChild(thEl);
         storeTable.appendChild(trEl);
+        allStores.push(this);
     }
 }
 
@@ -89,20 +92,29 @@ function tableHeader(){
 }
 
 function tableFooter(){
+   var total = 0;
+   var totalOfTotal = 0; 
    var thEl = document.createElement('th');
    var trEl = document.createElement('tr');
    thEl.textContent = 'Total';
    trEl.appendChild(thEl);
-   for (var i = 0; i < hourOfOperation.length; i++) {
-        thEl = document.createElement('th');
-        thEl.textContent = '1';
-        trEl.appendChild(thEl);
+
+    for(var i = 0; i < hourOfOperation.length; i++) {
+       for(var j = 0; j < allStores.length; j++) { 
+          total += allStores[j].cookiesSoldPerHour[i];
+       }
+     thEl = document.createElement('th');
+     thEl.textContent = total;
+     trEl.appendChild(thEl);
+    totalOfTotal += total;
+    total = 0;
    }
    thEl = document.createElement('th');
-   thEl.textContent = '2';
+   thEl.textContent = totalOfTotal;
    trEl.appendChild(thEl);
    storeTable.appendChild(trEl);
 }
+
 
 
 
@@ -114,6 +126,7 @@ var seattleCenterShop = new CookieShop(11, 38, 3.7, 'Seattle Center');
 var capitalHillCookieShop = new CookieShop(20, 38, 2.3, 'Capital Hill');
 var alkiCookieShop = new CookieShop(2, 16, 3.6, 'Alki');
 
+
 tableHeader();
 
 pikeCookieShop.render();
@@ -124,5 +137,8 @@ alkiCookieShop.render();
 
 tableFooter();
 
-console.log(pikeCookieShop);
+hourlyTotal();
+
+
+// console.log(pikeCookieShop);
 // console.log(pikeCookieShop.makeRandom());
