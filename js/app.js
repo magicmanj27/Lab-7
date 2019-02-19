@@ -2,13 +2,7 @@
 
 var storeTable = document.getElementById('storeTable');
 
-// var pikeUI = document.getElementById('first-pike');
-// var seatacUI = document.getElementById('seatac-airport');
-// var pikeUI = document.getElementById('first-pike');
-// var pikeUI = document.getElementById('first-pike');
-// var pikeUI = document.getElementById('first-pike');
-
- var allStores = [];
+var allStores = [];
 
 var hourOfOperation = [
     '6am',
@@ -86,7 +80,7 @@ function tableHeader(){
         // storeTable.appendChild(trEl);
     }
     thEl = document.createElement('th');
-    thEl.textContent = 'Total';
+    thEl.textContent = 'Daily Total';
     trEl.appendChild(thEl);
     storeTable.appendChild(trEl);
 }
@@ -115,11 +109,6 @@ function tableFooter(){
    storeTable.appendChild(trEl);
 }
 
-
-
-
-
-
 var pikeCookieShop = new CookieShop(23, 65, 6.3, '1st and Pike');
 var seatacAirPortCookieShop = new CookieShop(3, 24, 1.2, 'Seattle AirPort');
 var seattleCenterShop = new CookieShop(11, 38, 3.7, 'Seattle Center');
@@ -137,8 +126,4 @@ alkiCookieShop.render();
 
 tableFooter();
 
-hourlyTotal();
 
-
-// console.log(pikeCookieShop);
-// console.log(pikeCookieShop.makeRandom());
