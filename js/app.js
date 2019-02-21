@@ -27,9 +27,6 @@ function CookieShop(minCust, maxCust, avgCookiesSold, shopName) {
     this.maxCust = maxCust;
     this.avgCookiesSold = avgCookiesSold;
     this.shopName = shopName;
-
-   
-
     this.cookiesSoldPerHour = [];
     this.cookiesSold = 0;
     this.total = 0;
@@ -46,26 +43,26 @@ function CookieShop(minCust, maxCust, avgCookiesSold, shopName) {
             this.total += this.cookiesSold;
         } 
     }
-
-    this.render = function() {
-        this.calculate();
-        var tdEl = document.createElement('td');
-        var trEl = document.createElement('tr');
-        var thEl = document.createElement('th');
-        thEl.textContent = this.shopName;
-        trEl.appendChild(thEl);
-        for(var i = 0; i < hourOfOperation.length; i++) {
-            tdEl = document.createElement('td');
-            tdEl.textContent = `${this.cookiesSoldPerHour[i]}`;
-            trEl.appendChild(tdEl);
-        }
-        thEl = document.createElement('th');
-        thEl.textContent = this.total;
-        trEl.appendChild(thEl);
-        storeTable.appendChild(trEl);
-        allStores.push(this);
-    }
+    allStores.push(this);
 }
+
+CookieShop.prototype.render = function() {
+    this.calculate();
+    var tdEl = document.createElement('td');
+    var trEl = document.createElement('tr');
+    var thEl = document.createElement('th');
+    thEl.textContent = this.shopName;
+    trEl.appendChild(thEl);
+    for(var i = 0; i < hourOfOperation.length; i++) {
+        tdEl = document.createElement('td');
+        tdEl.textContent = `${this.cookiesSoldPerHour[i]}`;
+        trEl.appendChild(tdEl);
+    }
+    thEl = document.createElement('th');
+    thEl.textContent = this.total;
+    trEl.appendChild(thEl);
+    storeTable.appendChild(trEl);
+};
 
 function tableHeader(){
     var trEl = document.createElement('tr');
@@ -115,15 +112,22 @@ var seattleCenterShop = new CookieShop(11, 38, 3.7, 'Seattle Center');
 var capitalHillCookieShop = new CookieShop(20, 38, 2.3, 'Capital Hill');
 var alkiCookieShop = new CookieShop(2, 16, 3.6, 'Alki');
 
-
-tableHeader();
-
-pikeCookieShop.render();
-seatacAirPortCookieShop.render();
-seattleCenterShop.render();
-capitalHillCookieShop.render();
-alkiCookieShop.render();
-
-tableFooter();
+// tableHeader();
 
 
+
+// pikeCookieShop.render();
+// seatacAirPortCookieShop.render();
+// seattleCenterShop.render();
+// capitalHillCookieShop.render();
+// alkiCookieShop.render();
+
+
+
+(function renderTable() {
+    tableHeader();
+    for(var i = 0; i < allStores.length; i++) {
+      allStores[i].render();
+    }
+    tableFooter();
+  })();

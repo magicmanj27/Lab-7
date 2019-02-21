@@ -1,6 +1,9 @@
 $color-primary: #55c57a;
-$color-primary-light: #7ed56f;
-$color-primary-dark: #28b485;
+$color-primary-light: rgb(126, 213, 111);
+$color-primary-dark: rgb(40, 180, 133);
+
+$color-white: #fff;
+$color-black: #000;
 
 *,
 *::after,
@@ -28,62 +31,65 @@ body {
   height: 95vh;
   background-image: linear-gradient(
       to right bottom,
-      rgba($color-primary-light, 0.8),
-      rgba($color-primary-dark, 0.8)
-    ),
+      rgba($color-primary-light, 0.6),
+      rgba($color-primary-dark, 0.2)),
     url(../img/emanuela-picone-46395-unsplash.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
 
   clip-path: polygon(0% 0%, 100% 0, 100% 90%, 50% 100%, 0 90%);
+
+  &__logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -10%);
+  }  
 }
 
-.logo-box {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-}
 
-.logo {
-  height: 35px;
-}
-
-.text-box {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -10%);
-}
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
 
   backface-visibility: hidden;
   margin-bottom: 400px;
+
+  &--main {
+    display: block;
+    font-size: 45px;
+    font-weight: 400;
+    letter-spacing: 10px;
+  
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
+  
+  &--sub {
+    display: block;
+    font-size: 15px;
+    font-weight: 400px;
+    letter-spacing: 15px;
+  
+    animation: moveInRight 1s ease-out;
+  }
 }
 
-.heading-primary-main {
-  display: block;
-  font-size: 45px;
-  font-weight: 400;
-  letter-spacing: 10px;
 
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-}
-
-.heading-primary-sub {
-  display: block;
-  font-size: 15px;
-  font-weight: 400px;
-  letter-spacing: 15px;
-
-  animation: moveInRight 1s ease-out;
-}
 
 @keyframes moveInLeft {
   0% {
@@ -129,53 +135,57 @@ body {
   }
 }
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 15px 40px;
-  display: inline-block;
-  transition: all 0.2s;
-  position: relative;
+.btn {
+
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    transition: all 0.2s;
+    position: relative;
+  }
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba($color-black, 0.2);
+
+      &::after {
+        transform: scaleX(1.5) scaleY(1.6);
+        opacity: 0;
+      }
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba($color-black, 0.2);
+  }
+  
+  &--white {
+    background-color: $color-white;
+    color: #f9989f;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+  
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInButtom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.btn-white {
-  background-color: #fff;
-  color: #f9989f;
-}
-
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.4s;
-}
-
-.btn-white::after {
-  background-color: #fff;
-}
-
-.btn:hover::after {
-  transform: scaleX(1.5) scaleY(1.6);
-  opacity: 0;
-}
-
-.btn-animated {
-  animation: moveInButtom 0.5s ease-out 0.75s;
-  animation-fill-mode: backwards;
-}
