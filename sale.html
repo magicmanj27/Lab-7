@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900,900i" rel="stylesheet">
         <title>Cookie Stand</title>
     </head>
@@ -19,16 +19,20 @@
                 <legend>Store Data Submission Form</legend>
 
                 <label for="storeLocation">Store Location:</label>
-                <input name="storeLocation" type="text" placeholder="Store Name..." />
+                <input name="storeLocation" type="text" placeholder="Store Name..." required /> 
+                <br>
 
                 <label for="minCust">Minimum Hourly Customer:</label>
-                <input name="minCust" type="number" placeholder="Number..." />
+                <input name="minCust" type="number" placeholder="Number..." required />
+                <br>
 
                 <label for="maxCust">Maximum Hourly Customer:</label>
-                <input name="maxCust" type="number" placeholder="Number..." />
+                <input name="maxCust" type="number" placeholder="Number..." required />
+                <br>
 
                 <label for="avgCookiesSold">Avg. Cookies Per Customer:</label>
-                <input name="avgCookiesSold" type="number" placeholder="Number..." />
+                <input name="avgCookiesSold" type="number" placeholder="Number..."  required />
+                <br>
 
                 <button type="submit">Enter Data</button>
 

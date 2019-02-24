@@ -18,5 +18,8 @@
   "homepage": "https://github.com/magicmanj27/Lab-7#readme",
   "devDependencies": {
     "node-sass": "^4.11.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }
