@@ -28,7 +28,7 @@ var CookieShop = function(minCust, maxCust, avgCookiesSold, shopName) {
             this.total += this.cookiesSold;
         } 
     }
-    allStores.push(this);
+    allStores.unshift(this);
 }
 
 CookieShop.prototype.render = function() {
@@ -37,6 +37,7 @@ CookieShop.prototype.render = function() {
     var trEl = document.createElement('tr');
     var thEl = document.createElement('th');
     thEl.textContent = this.shopName;
+  
     trEl.appendChild(thEl);
     for(var i = 0; i < hourOfOperation.length; i++) {
         tdEl = document.createElement('td');
@@ -51,7 +52,7 @@ CookieShop.prototype.render = function() {
 
 function renderTable() {
     tableHeader();
-
+    
     for(var i = 0; i < allStores.length; i++) {
         allStores[i].render();
     }
@@ -60,7 +61,6 @@ function renderTable() {
 
 function handleDataSubmit(event) {
     event.preventDefault();
-    // CookieShop.calculate();
     
     var minimumCust = parseInt(event.target.minCust.value);
     var maximumCust = parseInt(event.target.maxCust.value);
@@ -75,13 +75,13 @@ function handleDataSubmit(event) {
     event.target.avgCookiesSold.value = null;
     event.target.storeLocation.value = null;
     
-
     
-    allStores.unshift(cookieShopHolder);
+    
+    // allStores.push(cookieShopHolder);
     document.getElementById('footer').remove();
     cookieShopHolder.render();
     tableFooter();
- }
+}
 
 function tableHeader(){
     
@@ -89,8 +89,6 @@ function tableHeader(){
     var trEl = document.createElement('tr');
     var thEl = document.createElement('th');
     thEl.textContent = '';
-    var trEl = document.createElement('tr');
-    trEl.setAttribute('id', 'header');
     
     trEl.appendChild(thEl);
     // storeTable.appendChild(trEl);
@@ -106,6 +104,8 @@ function tableHeader(){
     storeTable.appendChild(trEl);
 }
 
+
+
 function tableFooter(){
     var total = 0;
     var totalOfTotal = 0; 
@@ -116,7 +116,7 @@ function tableFooter(){
     trEl.setAttribute('id', 'footer');
 
     trEl.appendChild(thEl);
-    
+    debugger;
     for(var i = 0; i < hourOfOperation.length; i++) {
         for(var j = 0; j < allStores.length; j++) { 
             total += allStores[j].cookiesSoldPerHour[i];
@@ -140,6 +140,6 @@ var seattleCenterShop = new CookieShop(11, 38, 3.7, 'Seattle Center');
 var capitalHillCookieShop = new CookieShop(20, 38, 2.3, 'Capital Hill');
 var alkiCookieShop = new CookieShop(2, 16, 3.6, 'Alki');
 
+renderTable();
 
 storeForm.addEventListener('submit', handleDataSubmit);
-renderTable();

@@ -4,7 +4,7 @@ html {
 
 body {
       font-family: "Lato", sans-serif;
-      color: #000;
+      color: #fff;
       font-weight: 400;
       font-size: 16px;
       line-height: 1.7;
@@ -21,18 +21,19 @@ body {
   }
 
   .sale-overview {
-      background-image: linear-gradient(to right bottom,  #5f71c0ef,#5f71c083), url(../img/rawpixel-632458-unsplash.jpg);
+      background-image:  url(../img/rawpixel-632458-unsplash.jpg);
       height: 95vh;
       margin-top: 0;
       position: relative;
   } 
 
   h2 {
+      color: #000;
       display: inline-block;
       margin-top: 0;
       position: absolute;
       top:10%;
-      left: 45%;
+      left: 42%;
   }
 
 
@@ -40,41 +41,68 @@ body {
       border-spacing: 0;
       position: absolute;
       top: 24%;
-      left: 15%;
+      left: 10%
+  }
+
+  tr:hover {
+      color:grey;
+      background-color: yellow;
+      transform: scale(1.05);
   }
 
   tr:last-child th:last-child {
-      background-color: rgba(128, 0, 128, 0.65);
+      background-color: rgba(128, 0, 128);
       border-bottom-style: none;
   }
 
   tr:last-child {
-      background-color: #30e3cba8;
-  }
-  tr {
-      background-color: #1cb4c87c;
-  }
-  tr:hover {
-      transform: scale(1.1);
+      background-color: #30e3cb;
+    }
+  
+  tr:last-child:hover {
+      background-color: yellow;
   }
 
+  tr > th:hover {
+    color: white;
+    background-color: purple;
+  }
+
+  tr {
+      background-color: #1cb4c8;
+ }
+    
   th:last-child {
-      background-color: #30e3cba8;
+      background-color: #30e3cb;
+      border-bottom-color: #30e3cb;
   }
 
   th {
-      border-bottom-style: solid;
+      border-bottom-style: none;
       border-bottom-width: 2px;
-      border-color: #d9d9d94b;
-
+      border-color: none;
       padding: 10px 15px;
   }
 
+
   td {
-      border-bottom-style: solid;
       border-bottom-width: 2px;
-      border-color: #d9d9d94b;
+      border-color: #1cb4c8;
       text-align: center;
   }
 
+  td:hover {
+      color:white;
+       background-color: purple;
+  }
+
+  /* FORM */
+
+  input {
+      background-color: beige;
+      border-style: none;
+      border-bottom-style: solid;
+      
+      border-bottom-color: #666;
+  }
 
