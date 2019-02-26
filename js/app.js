@@ -1,7 +1,7 @@
 'use strict'
 
 var storeTable = document.getElementById('storeTable');
-var storeForm = document.getElementById('store-form')
+var storeForm = document.getElementById('store-form');
 
 var allStores = [];
 
@@ -116,7 +116,7 @@ function tableFooter(){
     trEl.setAttribute('id', 'footer');
 
     trEl.appendChild(thEl);
-    debugger;
+    
     for(var i = 0; i < hourOfOperation.length; i++) {
         for(var j = 0; j < allStores.length; j++) { 
             total += allStores[j].cookiesSoldPerHour[i];
