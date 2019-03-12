@@ -27,6 +27,10 @@ body {
       position: relative;
   } 
 
+  form {
+      color: black;
+  }
+
   h2 {
       color: #000;
       display: inline-block;
